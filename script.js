@@ -2,127 +2,104 @@
 function getComputerChoice() {
     //Declaring a random number to ASSIGN it with the computer choice !! i made a logic for the random number to be between 1 to 100.
     let randomNumber = Math.floor(Math.random() * 100) + 1; 
-    console.log(randomNumber);
+    
     //DECLARE a VARIABLE for the computer choice and assign it with value 0
     let choice = "0";
-    console.log(choice);
+
     //CONDITION :: we have three randomly string value so i'm going to divide the value 100 to 3 part from 1 up to 30 and from 31 up to 60 and from 61 up to 100.
     if (randomNumber <= 30) { //the first one i'm gonna target the ROCK choice and make it between 1 up to 30.
         //ASSIGN the choice value to a string(ROCK)
         choice = String("rock");
-        console.log(choice);
     }
     else if (randomNumber >= 31 && randomNumber <= 60) {// the second target is going to be between 31 up to 60.
         //ASSIGN the choice value to a string(PAPER)
         choice = String("paper");
-        console.log(choice);
     }
     //the last CONDItION we don't need to evaluate an expression because when it reach this statement this MEANS our value well be between 61 and 100.
     else if(randomNumber >= 61) {
         choice = String("scissors");
-        console.log(choice);
     }
     return choice.toLocaleLowerCase(); //RETURN the value back 
 }
 
 
 function getHumanChoice(str1) { // FUNCTION takes the human choice 
-     //Ask the user for Input
     
     if (str1 === "rock") { // if the Human choice was Rock RETURN Rock!
         return "rock";
-        console.log(str1);
     }else if (str1 === "paper") { // if the Human choice was Paper RETURN Paper!
         return "paper";
-        console.log(str1);
     }else if (str1 === "scissors") { // if the Human choice was Scissors RETURN Scissors!
         return "scissors";
-        console.log(str1);
     }
 }
 let humanScore = 0; //Hold the Human Score and start from 0!
-console.log(humanScore);
 let computerScore = 0; //Hold the Computer Score and start from 0!
-console.log(computerScore);
 
 function PlayRound(humanChoice,ComputerChoice) { //The FUNCTION that takes Decision who is the winner!!
      
     if (humanChoice === ComputerChoice ) {
         console.log("Draw!");
-         console.log(humanChoice);
-           console.log(ComputerChoice);
+        
     }
    else if (humanChoice === "rock" && ComputerChoice === "paper") { //CONDITIONS Depends on the user input !
            console.log("You lose! Paper beats Rock");           //INCREMENT the score of the Winner!
            computerScore++;
-           console.log(computerScore);
-           console.log(humanChoice);
-           console.log(ComputerChoice);
            return ComputerChoice;
     }
 
     
     else if (humanChoice === "rock" && ComputerChoice === "scissors") {
         console.log("You win! Rock smash Scissors");
-        humanScore++;
-         console.log(humanScore);
-         console.log(humanChoice);
-           console.log(ComputerChoice);
+           humanScore++;
            return humanChoice;
     }
     else if (humanChoice === "paper" && ComputerChoice === "rock") {
         console.log("You win! Paper beats Rock");
         humanScore++;
-        console.log(humanScore);
-         console.log(humanChoice);
-           console.log(ComputerChoice);
         return humanChoice;
     }
     else if (humanChoice === "paper" && ComputerChoice === "scissors") {
         console.log("You lose! Scissors beats Paper");
         computerScore++;
-         console.log(computerScore);
-         console.log(humanChoice);
-           console.log(ComputerChoice);
         return ComputerChoice;
     }
   else  if (humanChoice === "scissors" && ComputerChoice === "paper") {
            console.log("You win! Scissors beats  Paper");
            humanScore++;
-           console.log(humanScore);
-            console.log(humanChoice);
-           console.log(ComputerChoice);
            return humanChoice;
     }
     
     else if (humanChoice === "scissors" && ComputerChoice === "rock") {
         console.log("You lose! Rock smash Scissors");
         computerScore++;
-         console.log(computerScore);
-         console.log(humanChoice);
-           console.log(ComputerChoice);
-           return ComputerChoice;
+        return ComputerChoice;
     }
 }
 
-const HumanSelection = getHumanChoice(prompt("Rock, Paper, or Scissors?").toLocaleLowerCase());//VARIABLE with the Human choice
-console.log(HumanSelection);
-const ComputerSelection = getComputerChoice();//VARIABLE with the Computer choice
-console.log(ComputerSelection);
 
 //DECLARE new FUNCTION play game
 function PlayGame() {
     let rounds = 5;
     //INITIALIZE a Counter to play 5 Rounds
     while (rounds--) {
-        HumanSelection;
-        ComputerSelection;
+        const HumanSelection = getHumanChoice(prompt("Rock, Paper, or Scissors?").toLocaleLowerCase());//VARIABLE with the Human choice
+        console.log(HumanSelection);
+        const ComputerSelection = getComputerChoice();//VARIABLE with the Computer choice
+        console.log(ComputerSelection);
+
         PlayRound(HumanSelection,ComputerSelection); //call the function with these two VARIABLES!!
+        console.log(humanScore);
+        console.log(computerScore);
     }
     if (humanScore > computerScore) {
         console.log("Congratulation !! tou won")
     }
-    else console.log("you lose!! would you like to play again?")
+    else if ( humanScore < computerScore){
+
+     console.log("you lose!! would you like to play again?")
+    }
+    else console.log("Draw");
 }
 
 //call the Function
