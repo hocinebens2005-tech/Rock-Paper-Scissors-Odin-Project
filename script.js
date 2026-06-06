@@ -1,4 +1,9 @@
 //Declare a FUNCTION that gets the computer choice
+        const HumanSelection = getHumanChoice(prompt("Rock, Paper, or Scissors?").toLocaleLowerCase());//VARIABLE with the Human choice
+        console.log(HumanSelection);
+        const ComputerSelection = getComputerChoice();//VARIABLE with the Computer choice
+        console.log(ComputerSelection);
+
 function getComputerChoice() {
     //Declaring a random number to ASSIGN it with the computer choice !! i made a logic for the random number to be between 1 to 100.
     let randomNumber = Math.floor(Math.random() * 100) + 1; 
@@ -39,40 +44,77 @@ let computerScore = 0; //Hold the Computer Score and start from 0!
 function PlayRound(humanChoice,ComputerChoice) { //The FUNCTION that takes Decision who is the winner!!
      
     if (humanChoice === ComputerChoice ) {
-        console.log("Draw!");
+        prompt("choose please");  
+       alert(`I choose : ${ComputerChoice}`);
+        
+        alert("Draw!");
         
     }
    else if (humanChoice === "rock" && ComputerChoice === "paper") { //CONDITIONS Depends on the user input !
-           console.log("You lose! Paper beats Rock");           //INCREMENT the score of the Winner!
+    prompt("choose please");     
+    alert(`I choose : ${ComputerChoice}`);
+    alert("You lose! Paper beats Rock");           //INCREMENT the score of the Winner!
            computerScore++;
+            alert(`your score is : ${humanScore}`);
+           alert(`And my score : ${computerScore}`);
+           alert(`let's continue ${HumanSelection}`);
            return ComputerChoice;
     }
 
     
     else if (humanChoice === "rock" && ComputerChoice === "scissors") {
-        console.log("You win! Rock smash Scissors");
+        prompt("choose please");  
+        alert(`I choose : ${ComputerChoice}`);
+        alert("You win! Rock smash Scissors");
            humanScore++;
+          alert(`your score is : ${humanScore}`);
+           alert(`And my score : ${computerScore}`);
+           alert(`let's continue ${HumanSelection}`);
            return humanChoice;
     }
     else if (humanChoice === "paper" && ComputerChoice === "rock") {
-        console.log("You win! Paper beats Rock");
+        prompt("choose please");  
+        alert(`I choose : ${ComputerChoice}`);
+        
+        alert("You win! Paper beats Rock");
         humanScore++;
+         alert(`your score is : ${humanScore}`);
+           alert(`And my score : ${computerScore}`);
+           alert(`let's continue ${HumanSelection}`);
         return humanChoice;
     }
     else if (humanChoice === "paper" && ComputerChoice === "scissors") {
-        console.log("You lose! Scissors beats Paper");
+        prompt("choose please");  
+        alert(`I choose : ${ComputerChoice}`);
+        
+        alert("You lose! Scissors beats Paper");
         computerScore++;
+         alert(`your score is : ${humanScore}`);
+           alert(`And my score : ${computerScore}`);
+           alert(`let's continue ${HumanSelection}`);
         return ComputerChoice;
     }
   else  if (humanChoice === "scissors" && ComputerChoice === "paper") {
-           console.log("You win! Scissors beats  Paper");
+    prompt("choose please");      
+    alert(`I choose : ${ComputerChoice}`);
+             
+    alert("You win! Scissors beats  Paper");
            humanScore++;
+           alert(`your score is : ${humanScore}`);
+           alert(`And my score : ${computerScore}`);
+           alert(`let's continue ${HumanSelection}`);
            return humanChoice;
     }
     
     else if (humanChoice === "scissors" && ComputerChoice === "rock") {
-        console.log("You lose! Rock smash Scissors");
+        prompt("choose please");  
+        alert("I choose ",ComputerChoice);
+        
+        alert("You lose! Rock smash Scissors");
         computerScore++;
+         alert(`your score is : ${humanScore}`);
+           alert(`And my score : ${computerScore}`);
+           alert(`let's continue ${HumanSelection}`);
         return ComputerChoice;
     }
 }
@@ -83,14 +125,9 @@ function PlayGame() {
     let rounds = 5;
     //INITIALIZE a Counter to play 5 Rounds
     while (rounds--) {
-        const HumanSelection = getHumanChoice(prompt("Rock, Paper, or Scissors?").toLocaleLowerCase());//VARIABLE with the Human choice
-        console.log(HumanSelection);
-        const ComputerSelection = getComputerChoice();//VARIABLE with the Computer choice
-        console.log(ComputerSelection);
-
+        
         PlayRound(HumanSelection,ComputerSelection); //call the function with these two VARIABLES!!
-        console.log(humanScore);
-        console.log(computerScore);
+        
     }
     if (humanScore > computerScore) {
         console.log("Congratulation !! tou won")
@@ -103,4 +140,4 @@ function PlayGame() {
 }
 
 //call the Function
-console.log(PlayGame());
+prompt(PlayGame());
