@@ -53,65 +53,71 @@ function PlayRound(humanChoice,ComputerChoice) { //The FUNCTION that takes Decis
          console.log(humanChoice);
            console.log(ComputerChoice);
     }
-   else if (humanChoice == "Rock" && ComputerChoice == "Paper") { //CONDITIONS Depends on the user input !
+   else if (humanChoice == "rock" && ComputerChoice == "paper") { //CONDITIONS Depends on the user input !
            console.log("You lose! Paper beats Rock");           //INCREMENT the score of the Winner!
            computerScore++;
            console.log(computerScore);
            console.log(humanChoice);
            console.log(ComputerChoice);
+           return ComputerChoice;
     }
 
     
-    else if (humanChoice == "Rock" && ComputerChoice == "Scissors") {
+    else if (humanChoice == "rock" && ComputerChoice == "scissors") {
         console.log("You win! Rock smash Scissors");
         humanScore++;
          console.log(humanScore);
          console.log(humanChoice);
            console.log(ComputerChoice);
+           return humanChoice;
     }
-    else if (humanChoice == "Paper" && ComputerChoice == "Rock") {
+    else if (humanChoice == "paper" && ComputerChoice == "rock") {
         console.log("You win! Paper beats Rock");
         humanScore++;
         console.log(humanScore);
          console.log(humanChoice);
            console.log(ComputerChoice);
+        return humanChoice;
     }
-    else if (humanChoice == "Paper" && ComputerChoice == "Scissors") {
+    else if (humanChoice == "paper" && ComputerChoice == "scissors") {
         console.log("You lose! Scissors beats Paper");
         computerScore++;
          console.log(computerScore);
          console.log(humanChoice);
            console.log(ComputerChoice);
+        return ComputerChoice;
     }
-  else  if (humanChoice == "Scissors" && ComputerChoice == "Paper") {
+  else  if (humanChoice == "scissors" && ComputerChoice == "paper") {
            console.log("You win! Scissors beats  Paper");
            humanScore++;
            console.log(humanScore);
             console.log(humanChoice);
            console.log(ComputerChoice);
+           return humanChoice;
     }
     
-    else if (humanChoice == "Scissors" && ComputerChoice == "Rock") {
+    else if (humanChoice == "scissors" && ComputerChoice == "rock") {
         console.log("You lose! Rock smash Scissors");
         computerScore++;
          console.log(computerScore);
          console.log(humanChoice);
            console.log(ComputerChoice);
+           return ComputerChoice;
     }
 }
 
-
+const HumanSelection = getHumanChoice();//VARIABLE with the Human choice
+console.log(HumanSelection);
+const ComputerSelection = getComputerChoice();//VARIABLE with the Computer choice
+console.log(ComputerSelection);
 
 //DECLARE new FUNCTION play game
 function PlayGame() {
     let rounds = 5;
     //INITIALIZE a Counter to play 5 Rounds
     while (rounds--) {
-        const HumanSelection = getHumanChoice();//VARIABLE with the Human choice
-console.log(HumanSelection);
-const ComputerSelection = getComputerChoice();//VARIABLE with the Computer choice
-console.log(ComputerSelection);
-
+        HumanSelection;
+        ComputerSelection;
         PlayRound(HumanSelection,ComputerSelection); //call the function with these two VARIABLES!!
     }
     if (humanScore > computerScore) {
@@ -121,5 +127,4 @@ console.log(ComputerSelection);
 }
 
 //call the Function
-let play = PlayGame();
-console.log(play);
+PlayGame();
