@@ -2,6 +2,8 @@
      let HumanSelection = "0";
      let ComputerSelection = "0";
 
+
+
 function getComputerChoice() {
     //Declaring a random number to ASSIGN it with the computer choice !! i made a logic for the random number to be between 1 to 100.
     let randomNumber = Math.floor(Math.random() * 100) + 1; 
@@ -39,51 +41,78 @@ function getHumanChoice(str1) { // FUNCTION takes the human choice
 let humanScore = 0; //Hold the Human Score and start from 0!
 let computerScore = 0; //Hold the Computer Score and start from 0!
 
-function PlayRound(humanChoice,ComputerChoice) { //The FUNCTION that takes Decision who is the winner!!
+const resultDiv = document.createElement('div');
+resultDiv.id = 'result-display'
+document.body.appendChild(resultDiv);
+const scoreDiv = document.createElement('div');
+document.body.appendChild(scoreDiv);
+
+
+
+function PlayRound(humanChoice) { //The FUNCTION that takes Decision who is the winner!!
    
-    HumanSelection = getHumanChoice(prompt("Rock, Paper, or Scissors?").toLocaleLowerCase());//VARIABLE with the Human choice 
-    ComputerSelection = getComputerChoice().toLocaleLowerCase();//VARIABLE with the Computer choice
-//Declare a FUNCTION that gets the computer choice
-        humanChoice = HumanSelection;
-        ComputerChoice = ComputerSelection;
-        alert(`you played : ${humanChoice}`);  
-        alert(`I played : ${ComputerChoice}`);
+  
+    const ComputerChoice = getComputerChoice().toLocaleLowerCase();//VARIABLE with the Computer choice
+
+    let roundResult ="";
 
 
 if (humanChoice === "rock" && ComputerChoice === "paper") { //CONDITIONS Depends on the user input !
-    alert("You lose! Paper beats Rock");           //INCREMENT the score of the Winner!
+    roundResult ="You lose! Paper beats Rock";           //INCREMENT the score of the Winner!
            computerScore++;
     }
     else if (humanChoice === "rock" && ComputerChoice === "scissors") {
-        alert("You win! Rock smash Scissors");
+       roundResult = "You win! Rock smash Scissors";
            humanScore++;
     }
     else if (humanChoice === "paper" && ComputerChoice === "rock") {
-        alert("You win! Paper beats Rock");
+       roundResult = "You win! Paper beats Rock";
         humanScore++;
     }
     else if (humanChoice === "paper" && ComputerChoice === "scissors") {
-        alert("You lose! Scissors beats Paper");
+       roundResult = "You lose! Scissors beats Paper";
         computerScore++;
     }
   else  if (humanChoice === "scissors" && ComputerChoice === "paper") {
-    alert("You win! Scissors beats  Paper");
+     roundResult = "You win! Scissors beats  Paper";
            humanScore++;
     }
     else if (humanChoice === "scissors" && ComputerChoice === "rock") {
-        alert("You lose! Rock smash Scissors");
+        roundResult = "You lose! Rock smash Scissors";
         computerScore++;
     }
      else  {
-        alert("Draw!");
+      roundResult = "Draw!";
     }
-      alert(`your score is : ${humanScore}`);
-           alert(`And my score : ${computerScore}`);
-           alert(`let's continue`);
+    
+    resultDiv.textContent = roundResult;
+    scoreDiv.textContent = `your score: ${humanScore} | computer score: ${computerScore}`;
+
+    if (humanScore === 5) {
+        scoreDiv.textContent = "congratulation! you win";
+    }else if (computerScore === 5) {
+        scoreDiv.textContent = "better luck next time!s"
+    }
 }
 
 
 
+const rockBtn = document.createElement("button");
+const paperBtn = document.createElement("button");
+const scissorsBtn = document.createElement("button");
 
-//call the Function
-PlayGame();
+rockBtn.innerText = 'rock';
+paperBtn.innerText = 'paper';
+scissorsBtn.innerText = 'scissors';
+
+const buttons = [rockBtn,paperBtn,scissorsBtn]
+
+buttons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        e.preventDefault();
+        PlayRound(button.textContent.toLocaleLowerCase());
+});
+
+document.body.appendChild(button);
+});
+
