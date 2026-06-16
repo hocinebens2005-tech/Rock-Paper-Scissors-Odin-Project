@@ -83,23 +83,7 @@ if (humanChoice === "rock" && ComputerChoice === "paper") { //CONDITIONS Depends
 }
 
 
-//DECLARE new FUNCTION play game
-function PlayGame() {
-    let rounds = 5;
-    //INITIALIZE a Counter to play 5 Rounds
-    while (rounds--) {
-        PlayRound(HumanSelection,ComputerSelection); //call the function with these two VARIABLES!!
-        
-    }
-    if (humanScore > computerScore) {
-       alert("Congratulation !! You won");
-    }
-    else if ( humanScore < computerScore){
 
-     alert("you lose!! would you like to play again?");
-    }
-    else alert("Draw!!");
-}
 
 //call the Function
 PlayGame();
